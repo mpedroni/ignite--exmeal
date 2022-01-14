@@ -1,14 +1,10 @@
 defmodule Exmeal.Meals.Delete do
-  alias Exmeal.{Error, Repo}
-  alias Exmeal.Meals.Get
+  alias Exmeal.{Error, Meal, Repo}
 
   def call(id) when is_integer id do
-    IO.inspect(id)
-    with {:ok, meal} <- Get.by_id(id),
-     {:ok, _deleted_meal} = result <- Repo.delete(meal)
-    do
-      result
-    else _ -> Error.meal_not_found_error()
+    case Repo.get(Meal, id) do
+      nil -> {:error, Error.meal_not_found_error()}
+      meal -> Repo.delete(meal)
     end
   end
 
