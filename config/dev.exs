@@ -1,4 +1,4 @@
-use Mix.Config
+import Mix.Config
 
 # Configure your database
 config :exmeal, Exmeal.Repo,
