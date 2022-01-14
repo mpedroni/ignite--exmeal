@@ -56,7 +56,7 @@ defmodule Exmeal.MealsControllerTest do
     end
 
     test "when id not exist, return an error", %{conn: conn} do
-      id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
+      id = 0
 
       response =
         conn
@@ -93,7 +93,7 @@ defmodule Exmeal.MealsControllerTest do
     end
 
     test "when not exist id, return an error", %{conn: conn} do
-      id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
+      id = 0
 
       response =
         conn
@@ -128,7 +128,7 @@ defmodule Exmeal.MealsControllerTest do
     end
 
     test "when id not exist, return an error", %{conn: conn} do
-      id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
+      id = 0
 
       response =
         conn

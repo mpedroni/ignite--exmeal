@@ -23,7 +23,7 @@ defmodule Exmeal.Meals.GetTest do
     end
 
     test "when an invalid id is given, returns an error" do
-      id = "a6ef9b39-d638-4835-9ad7-dbe48d1257eb"
+      id = 0
       response = Exmeal.get_meal_by_id(id)
 
       assert {:error, %Exmeal.Error{result: "Meal not found", status: :not_found}} = response
