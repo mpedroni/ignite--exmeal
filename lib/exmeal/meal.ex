@@ -4,6 +4,7 @@ defmodule Exmeal.Meal do
   import Ecto.Changeset
 
   @required_params [:description, :date, :calories]
+  @update_required_params @required_params
 
   schema "meals" do
     field :description, :string
@@ -15,8 +16,18 @@ defmodule Exmeal.Meal do
 
   def changeset(params) do
     %__MODULE__{}
-    |> cast(params, @required_params)
-    |> validate_required(@required_params)
+    |> changes(params, @required_params)
+  end
+
+  def changeset(meal, params) do
+    meal
+    |> changes(params, @update_required_params)
+  end
+
+  defp changes(struct, params, fields) do
+    struct
+    |> cast(params, fields)
+    |> validate_required(fields)
   end
 
 end
